@@ -1,12 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import StackNavigator from "./StackNavigator";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   return (
     <>
-      <StackNavigator/>
+      <StackNavigator />
     </>
   );
 }

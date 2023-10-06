@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -24,7 +25,16 @@ const Line = () => <View style={styles.line}></View>;
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const navigation = useNavigation();
+
+  // Cho 3s chuyển màn hình Main
+  const navigateToHome = () => {
+    setIsLogin(!isLogin);
+    setTimeout(() => {
+      navigation.replace("Main");
+    }, 3000);
+  };
 
   const navigateToSignup = () => {
     navigation.navigate("SigupScreen"); // Chuyển đến màn hình SignupScreen
@@ -75,9 +85,11 @@ const LoginScreen = () => {
           </View>
         </View>
         <Pressable
+          disabled={isLogin}
           style={styles.btnLog}
-          onPress={() => navigation.navigate("Main")}
+          onPress={navigateToHome}
         >
+          {isLogin ? <ActivityIndicator size={20} color={"white"} /> : null}
           <Text style={styles.titleLog}>Login</Text>
         </Pressable>
         <View
@@ -159,7 +171,9 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 10,
     justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-evenly",
   },
   titleLog: {
     color: "#FFFFFF",

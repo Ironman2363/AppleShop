@@ -1,17 +1,209 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <StatusBar />
-      <Text>ProfileScreen</Text>
+      {/* Avatar, name, email */}
+      <View style={styles.header}>
+        <Pressable style={styles.boderButtonHeader}>
+          <Image
+            style={styles.boderAvatar}
+            source={{
+              uri: "https://th.bing.com/th?id=ORMS.23668d8eba0da20c8b8e6464c32b46be&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0",
+            }}
+          />
+          <View style={styles.boderIcon}>
+            <FontAwesome5 name="pen" size={15} color="#999999" />
+          </View>
+        </Pressable>
+        <Text style={styles.txtNameHeader}>Mr.Irtan</Text>
+        <View style={styles.txtEmailHeader}>
+          <Text>krtolo727@gmail.com</Text>
+        </View>
+      </View>
+      {/* Button icon */}
+      <View style={styles.acticle}>
+        <Text style={styles.titlePro}>Sản phẩm</Text>
+        <Pressable style={styles.buttonView}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <MaterialCommunityIcons name="shopping-outline" size={25} />
+              <Text style={{ left: "30%" }}>Đơn hàng</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+        <Pressable style={styles.buttonView2}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <AntDesign name="hearto" size={24} />
+              <Text style={{ left: "30%" }}>Đã thích</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+        <Pressable style={styles.buttonView2}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Ionicons name="md-chatbox-ellipses-outline" size={24} />
+              <Text style={{ left: "30%" }}>Hỗ trợ với shop</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+      </View>
+      {/* Button icon */}
+      <View style={styles.aside}>
+        <Text style={styles.titlePro}>Tài khoản</Text>
+        <Pressable style={styles.buttonView}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Feather name="user-check" size={24} />
+              <Text style={{ left: "30%" }}>Cập nhật thông tin</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+        <Pressable style={styles.buttonView2}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <SimpleLineIcons name="lock" size={24} />
+              <Text style={{ left: "30%" }}>Đổi mật khẩu</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+        <Pressable style={styles.buttonView2}>
+          <View style={styles.rowButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <AntDesign name="setting" size={24} />
+              <Text style={{ left: "30%" }}>Cài đặt</Text>
+            </View>
+            <AntDesign name="right" size={17} color="gray" />
+          </View>
+        </Pressable>
+        {/* Button Logout */}
+        <Pressable
+          style={styles.buttonLogout}
+          onPress={() => navigation.replace("LoginScreen")} // Chuyển đến màn hình SignupScreen
+        >
+          <Text style={styles.txtLogout}>LOG OUT</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
 
 export default ProfileScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    marginTop: "5%",
+    lignSelf: "center",
+    alignItems: "center",
+  },
+  boderButtonHeader: {
+    width: 85,
+    height: 85,
+    borderRadius: 100,
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  boderAvatar: {
+    width: 70,
+    height: 70,
+    alignSelf: "center",
+    borderRadius: 100,
+  },
+  boderIcon: {
+    width: 30,
+    height: 30,
+    bottom: 0,
+    alignSelf: "flex-end",
+    position: "absolute",
+    borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  txtNameHeader: {
+    marginTop: "2%",
+    fontSize: 20,
+    fontWeight: "500",
+  },
+  txtEmailHeader: {
+    width: 180,
+    height: 25,
+    marginTop: "2%",
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+  },
+  acticle: {
+    marginTop: "5%",
+    marginHorizontal: "4%",
+  },
+  aside: {
+    marginTop: "2.5%",
+    marginHorizontal: "4%",
+  },
+  titlePro: {
+    fontSize: 17,
+    fontWeight: "500",
+  },
+  buttonView: {
+    marginTop: "3%",
+    height: 45,
+    borderRadius: 5,
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  buttonView2: {
+    marginTop: "1.5%",
+    height: 45,
+    borderRadius: 5,
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  rowButton: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginHorizontal: "4%",
+    justifyContent: "space-between",
+  },
+  buttonLogout: {
+    height: 55,
+    marginTop: "10%",
+    borderRadius: 35,
+    justifyContent: "center",
+    backgroundColor: "black",
+    marginHorizontal: "4%",
+  },
+  txtLogout: {
+    color: "white",
+    fontSize: 17,
+    alignSelf: "center",
+    fontWeight: "bold",
+  },
+});

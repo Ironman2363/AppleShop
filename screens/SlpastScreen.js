@@ -17,7 +17,7 @@ const SplashScreen = ({ navigation }) => {
     Animated.timing(progress, {
       toValue: 1,
       duration: 3000,
-      easing: Easing.linear,
+      easing: Easing.ease,
       useNativeDriver: false,
     }).start();
 

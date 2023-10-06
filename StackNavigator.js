@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import LoginScreen from "./screens/LoginScreen";
 import SigupScreen from "./screens/SigupScreen";
 import SlpastScreen from "./screens/SlpastScreen";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import NotificationScreen from "./screens/NotificationScreen";
@@ -15,51 +15,104 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const [number, setNumber] = useState(null);
+
+  // Cho 3s hiển thị thông báo
+  useEffect(() => {
+    setTimeout(() => {
+      setNumber(3);
+    }, 3000);
+  }, []);
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 60,
+        },
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+          tabBarIcon: ({ focused, color, size }) => (
+            <View style={styles.boxIcon}>
+              <MaterialCommunityIcons
+                name="home"
+                color={focused ? "black" : color}
+                size={size}
+              />
+              <Text style={focused ? styles.showTxt : styles.hiddenTxt}>
+                Home
+              </Text>
+            </View>
           ),
-          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Notification"
         component={NotificationScreen}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
+          // Hien thi thong bao
+          tabBarBadge: number,
+          tabBarBadgeStyle: { backgroundColor: "#6666FF" },
+          tabBarIcon: ({ focused, color, size }) => (
+            <View style={styles.boxIcon}>
+              <MaterialCommunityIcons
+                name="bell"
+                color={focused ? "black" : color}
+                size={size}
+              />
+              <Text style={focused ? styles.showTxt : styles.hiddenTxt}>
+                Notification
+              </Text>
+            </View>
           ),
-          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Order"
         component={OrderHistory}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="receipt" color={color} size={size} />
+          tabBarIcon: ({ focused, color, size }) => (
+            <View style={styles.boxIcon}>
+              <MaterialCommunityIcons
+                name="receipt"
+                color={focused ? "black" : color}
+                size={size}
+              />
+              <Text style={focused ? styles.showTxt : styles.hiddenTxt}>
+                Order
+              </Text>
+            </View>
           ),
-          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+          tabBarIcon: ({ focused, color, size }) => (
+            <View style={styles.boxIcon}>
+              <MaterialCommunityIcons
+                name="account"
+                color={focused ? "black" : color}
+                size={size}
+              />
+              <Text style={focused ? styles.showTxt : styles.hiddenTxt}>
+                Profile
+              </Text>
+            </View>
           ),
-          headerShown: false,
         }}
       />
     </Tab.Navigator>
   );
 };
+
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   return (
@@ -92,4 +145,14 @@ const StackNavigator = () => {
 
 export default StackNavigator;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  boxIcon: {
+    alignItems: "center",
+  },
+  showTxt: {
+    display: "flex",
+  },
+  hiddenTxt: {
+    display: "none",
+  },
+});
