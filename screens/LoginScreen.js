@@ -30,10 +30,7 @@ const LoginScreen = () => {
 
   // Cho 3s chuyển màn hình Main
   const navigateToHome = () => {
-    setIsLogin(!isLogin);
-    setTimeout(() => {
-      navigation.replace("Main");
-    }, 3000);
+    navigation.replace("Main");
   };
 
   const navigateToSignup = () => {
@@ -84,12 +81,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <Pressable
-          disabled={isLogin}
-          style={styles.btnLog}
-          onPress={navigateToHome}
-        >
-          {isLogin ? <ActivityIndicator size={20} color={"white"} /> : null}
+        <Pressable style={styles.btnLog} onPress={navigateToHome}>
           <Text style={styles.titleLog}>Login</Text>
         </Pressable>
         <View
