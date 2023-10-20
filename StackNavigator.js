@@ -3,17 +3,26 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+// Khai bao man hinh
+import SlpastScreen from "./screens/SlpastScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SigupScreen from "./screens/SigupScreen";
-import SlpastScreen from "./screens/SlpastScreen";
 import HomeScreen from "./screens/HomeScreen";
-import ProfileScreen from "./screens/ProfileScreen";
 import NotificationScreen from "./screens/NotificationScreen";
 import OrderHistory from "./screens/OrderHistory";
+import ProfileScreen from "./screens/ProfileScreen";
+import OrderScreen from "./screens/Order/OrderScreen";
+import FavouriteScreen from "./screens/Profile/FavouriteScreen";
+import Chatbotscreen from "./screens/Profile/Chatbotscreen";
+import EditAccountScreen from "./screens/Profile/EditAccountScreen";
+import AccountScrren from "./screens/Profile/AccountScrren";
+
+// Khai bao icon
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// Noi khai bao chuyen man
 const Tab = createBottomTabNavigator();
-
 const BottomTabNavigator = () => {
   const [number, setNumber] = useState(null);
 
@@ -27,11 +36,12 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarStyle: {
+          height: 55,
+        },
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          height: 60,
-        },
+        tabBarActiveBackgroundColor: "#EEEEEE",
       }}
     >
       <Tab.Screen
@@ -113,6 +123,7 @@ const BottomTabNavigator = () => {
   );
 };
 
+// Bottom Tab
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   return (
@@ -136,6 +147,31 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabNavigator} // Include the BottomTabNavigator as a screen
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="OrderScreen"
+          component={OrderScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FavouriteScreen"
+          component={FavouriteScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Chatbotscreen"
+          component={Chatbotscreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditAccountScreen"
+          component={EditAccountScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AccountScrren"
+          component={AccountScrren}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

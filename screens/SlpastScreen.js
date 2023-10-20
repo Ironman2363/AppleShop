@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Animated, View, Easing } from "react-native";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { AntDesign } from "@expo/vector-icons";
 
 const SplashScreen = ({ navigation }) => {
   const progress = new Animated.Value(0);
