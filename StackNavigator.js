@@ -11,6 +11,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import NotificationScreen from "./screens/NotificationScreen";
 import OrderHistory from "./screens/OrderHistory";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import ProductdetailsScreen from "./screens/ProductdetailsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -136,6 +137,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabNavigator} // Include the BottomTabNavigator as a screen
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProductdetailsScreen"
+          component={ProductdetailsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
