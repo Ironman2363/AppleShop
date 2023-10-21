@@ -8,12 +8,12 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+
 // Biến cho các giá trị cố định
 const BLACK_COLOR = "black";
 const LINE_HEIGHT = 0.5;

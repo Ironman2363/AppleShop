@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import {
   FlatList,
@@ -7,6 +8,8 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { useRoute } from "@react-navigation/native";
 

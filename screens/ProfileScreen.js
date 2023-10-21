@@ -1,20 +1,15 @@
-import {
-  ActivityIndicator,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import {
+  FontAwesome5,
+  Feather,
+  MaterialCommunityIcons,
+  AntDesign,
+  Ionicons,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
 
 const ProfileScreen = ({ navigation }) => {
   return (
@@ -41,7 +36,10 @@ const ProfileScreen = ({ navigation }) => {
       {/* Button icon */}
       <View style={styles.acticle}>
         <Text style={styles.titlePro}>Sản phẩm</Text>
-        <Pressable style={styles.buttonView}>
+        <Pressable
+          style={styles.buttonView}
+          onPress={() => navigation.navigate("OrderScreen")}
+        >
           <View style={styles.rowButton}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <MaterialCommunityIcons name="shopping-outline" size={25} />
@@ -50,7 +48,10 @@ const ProfileScreen = ({ navigation }) => {
             <AntDesign name="right" size={17} color="gray" />
           </View>
         </Pressable>
-        <Pressable style={styles.buttonView2}>
+        <Pressable
+          style={styles.buttonView2}
+          onPress={() => navigation.navigate("FavouriteScreen")}
+        >
           <View style={styles.rowButton}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <AntDesign name="hearto" size={24} />
@@ -59,7 +60,10 @@ const ProfileScreen = ({ navigation }) => {
             <AntDesign name="right" size={17} color="gray" />
           </View>
         </Pressable>
-        <Pressable style={styles.buttonView2}>
+        <Pressable
+          style={styles.buttonView2}
+          onPress={() => navigation.navigate("Chatbotscreen")}
+        >
           <View style={styles.rowButton}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Ionicons name="md-chatbox-ellipses-outline" size={24} />
@@ -72,7 +76,10 @@ const ProfileScreen = ({ navigation }) => {
       {/* Button icon */}
       <View style={styles.aside}>
         <Text style={styles.titlePro}>Tài khoản</Text>
-        <Pressable style={styles.buttonView}>
+        <Pressable
+          style={styles.buttonView}
+          onPress={() => navigation.navigate("EditAccountScreen")}
+        >
           <View style={styles.rowButton}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Feather name="user-check" size={24} />
@@ -81,7 +88,10 @@ const ProfileScreen = ({ navigation }) => {
             <AntDesign name="right" size={17} color="gray" />
           </View>
         </Pressable>
-        <Pressable style={styles.buttonView2}>
+        <Pressable
+          style={styles.buttonView2}
+          onPress={() => navigation.navigate("AccountScrren")}
+        >
           <View style={styles.rowButton}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <SimpleLineIcons name="lock" size={24} />
@@ -162,11 +172,11 @@ const styles = StyleSheet.create({
   },
   acticle: {
     marginTop: "5%",
-    marginHorizontal: "4%",
+    marginHorizontal: "5%",
   },
   aside: {
     marginTop: "2.5%",
-    marginHorizontal: "4%",
+    marginHorizontal: "5%",
   },
   titlePro: {
     fontSize: 17,
@@ -193,7 +203,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   buttonLogout: {
-    height: 55,
+    height: 50,
     marginTop: "10%",
     borderRadius: 35,
     justifyContent: "center",
